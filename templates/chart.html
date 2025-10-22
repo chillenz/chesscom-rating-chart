@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ username }} - {{ time_control.title() }} Rating Chart</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">♟ Chess.com Rating Chart ♟</h1>
+    
+    <div class="chart-page">
+      <h2 class="chart-title"><a href="https://www.chess.com/member/{{ username }}" target="_blank" class="username-link">{{ username }}</a>'s {{ time_control.upper() }} rating</h2>
+      
+      <div class="graph-box">
+        <div class="chart-container">
+          {{ chart_html|safe }}
+        </div>
+        <span class="graph-placeholder">GRAPH</span>
+      </div>
+      
+      <a href="/" class="back-link">←Back</a>
+    </div>
+  </div>
+</body>
+</html>

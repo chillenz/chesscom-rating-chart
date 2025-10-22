@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chess.com Rating Chart</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">♟ Chess.com Rating Chart ♟</h1>
+        
+        <div class="content-wrapper">
+            <div class="left-section">
+                <p class="subtitle">Turn your chess.com rating history into a candle stick chart by just entering your username!</p>
+                <div class="placeholder-box">
+                  <img src="{{ url_for('static', filename='example.png') }}" 
+                      alt="example chart" 
+                      class="placeholder-img">
+                </div>
+            </div>
+            
+            <div class="right-section">
+                <form method="POST">
+                    <div class="form-group username-group">
+                        <label class="section-title">Chess.com Username</label>
+                        <input type="text" name="username" placeholder="Enter your username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="section-title">Time control</label>
+                        <div class="time-control-grid">
+                            <label class="time-control-option">
+                                <input type="radio" name="time_control" value="bullet" required>
+                                <span class="time-control-label">
+                                    <span class="label-text">Bullet</span>
+                                    <img src="{{ url_for('static', filename='bullet.png') }}" alt="Bullet" class="time-icon">
+                                </span>
+                            </label>
+                            
+                            <label class="time-control-option">
+                                <input type="radio" name="time_control" value="blitz" required>
+                                <span class="time-control-label">
+                                    <span class="label-text">Blitz</span>
+                                    <img src="{{ url_for('static', filename='blitz.png') }}" alt="Blitz" class="time-icon">
+                                </span>
+                            </label>
+                            
+                            <label class="time-control-option">
+                                <input type="radio" name="time_control" value="rapid" required>
+                                <span class="time-control-label">
+                                    <span class="label-text">Rapid</span>
+                                    <img src="{{ url_for('static', filename='rapid.png') }}" alt="Rapid" class="time-icon">
+                                </span>
+                            </label>
+                            
+                            <label class="time-control-option">
+                                <input type="radio" name="time_control" value="daily" required>
+                                <span class="time-control-label">
+                                    <span class="label-text">Daily</span>
+                                    <img src="{{ url_for('static', filename='daily.png') }}" alt="Daily" class="time-icon">
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Create Graph</button>
+                </form>
+                
+                {% if error %}
+                  <p class="error">{{ error }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
